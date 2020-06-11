@@ -7,6 +7,7 @@ services:
     build:
       context: front-end/
       dockerfile: Dockerfile.development
+    image: pipeline_front_end
     command: ./docker_entrypoint.sh server
     ports:
       - "3000:3000"
@@ -20,6 +21,7 @@ services:
     build:
       context: back-end/
       dockerfile: Dockerfile.development
+    image: pipeline_back_end
     command: ./docker_entrypoint.sh server
     ports:
       - "3001:3001"
