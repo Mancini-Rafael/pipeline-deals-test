@@ -1,0 +1,18 @@
+FROM ruby:latest
+
+RUN apt-get update -yqq && \
+    apt-get install --yes apt-utils && \
+    apt-get install --yes curl && \
+    curl --silent --location https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install --yes nodejs && \
+    apt-get install --yes build-essential && \
+    apt-get install libsasl2-dev nano && \
+    gem install bundler
+
+ADD Gemfile* /app/
+WORKDIR /app
+ADD . /app
+
+RUN bundle check || bundle install --jobs 20 --retry 5
+
+ENTRYPOINT ["./docker_entrypoint.sh"]
