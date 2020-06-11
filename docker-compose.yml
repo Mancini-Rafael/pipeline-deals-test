@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  front_end:
+    tty: true
+    stdin_open: true
+    build:
+      context: front-end/
+      dockerfile: Dockerfile.development
+    command: ./docker_entrypoint.sh server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back_end
+    volumes:
+      - ./front-end/:/app
+  back_end:
+    tty: true
+    stdin_open: true
+    build:
+      context: back-end/
+      dockerfile: Dockerfile.development
+    command: ./docker_entrypoint.sh server
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./back-end/:/app
+      - ./back-end/bundle_cache:/usr/local/bundle:rw,delegated

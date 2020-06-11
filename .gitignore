@@ -1,0 +1,29 @@
+# FRONT-END
+front-end/node_modules
+front-end/.pnp
+front-end/.pnp.js
+# testing
+front-end/coverage
+# production
+front-end/build
+# misc
+front-end/.DS_Store
+front-end/.env.local
+front-end/.env.development.local
+front-end/.env.test.local
+front-end/.env.production.local
+front-end/npm-debug.log*
+front-end/yarn-debug.log*
+front-end/yarn-error.log*
+
+# BACK-END
+# Ignore bundler config.
+back-end/bundle_cache
+# Ignore all logfiles and tempfiles.
+back-end/log/*
+back-end/tmp/*
+# Ignore Byebug command history file.
+back-end/.byebug_history
+# Ignore encrypted secrets key file.
+back-end/config/master.key
+
