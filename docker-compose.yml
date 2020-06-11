@@ -18,6 +18,7 @@ services:
   back_end:
     tty: true
     stdin_open: true
+    env_file: back-end/.env
     build:
       context: back-end/
       dockerfile: Dockerfile.development
