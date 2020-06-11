@@ -9,7 +9,6 @@ for a simple project where a user lists deals obtained via the PipelineDeals API
 ### Installing
 - The project uses docker and docker-compose to unify all dependencies. To set up, run (in the root folder):
 ``` bash
-  ./docker_setup.sh
   ./docker-compose up
 ```
 
