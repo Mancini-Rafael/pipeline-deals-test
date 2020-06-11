@@ -38,7 +38,9 @@ class Api::V1::FetchDeals
   end
 
   def url
-    base = Rails.application.credentials[:pipeline_deals_endpoint]
-    url = URI.parse(base + "deals.json?api_key=#{Rails.application.credentials[:pipeline_deals_api_key]}")
+    # The best approach would be Rails.application.credentials[:pipeline_deals_endpoint/pipeline_deals_api_key],
+    # however, then I would need to share my master.key and the whole process would not be seamless
+    # url = URI.parse(Rails.application.credentials[:pipeline_deals_endpoint] + "deals.json?api_key=#{Rails.application.credentials[:pipeline_deals_api_key]}")
+    url = URI.parse(ENV.fetch("PIPELINE_DEALS_ENDPOINT") + "deals.json?api_key=#{ENV.fetch("PIPELINE_DEALS_API_KEY")}")
   end
 end
