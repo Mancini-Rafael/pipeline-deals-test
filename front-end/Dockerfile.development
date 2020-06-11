@@ -1,0 +1,21 @@
+FROM node:latest
+WORKDIR /app
+ADD . /app
+RUN apt update && apt install -y \
+    git \
+    procps
+# --------------------------------------
+#https://github.com/nodejs/docker-node/issues/479#issuecomment-319446283
+#should not install any global npm packages as root, a new user 
+#is created and used here
+USER $USERNAME
+#set the npm global location for dev user
+ENV NPM_CONFIG_PREFIX="/home/$USERNAME/.npm-global"
+RUN mkdir -p ~/src \
+    && mkdir ~/.npm-global
+#append the .npm-global to path, other wise globally installed packages 
+#will not be available in bash
+ENV PATH="/home/$USERNAME/.npm-global:/home/$USERNAME/.npm-global/bin:${PATH}"
+# --------------------------------------
+RUN npm install
+ENTRYPOINT ["./docker_entrypoint.sh"]
