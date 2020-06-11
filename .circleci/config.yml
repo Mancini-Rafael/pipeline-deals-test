@@ -13,7 +13,7 @@ jobs:
           environment:
             PIPELINE_DEALS_ENDPOINT: http://test.com
             PIPELINE_DEALS_API_KEY: 123somekey
-          command: echo cd ~/repo/back-end && bundle install && rspec spec
+          command: cd ~/repo/back-end && bundle install && rspec spec
       - run:  
           name: run front-end tests
           command: cd ~/repo/front-end && npm install && npm test

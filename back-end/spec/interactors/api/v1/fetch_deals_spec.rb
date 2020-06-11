@@ -21,8 +21,7 @@ RSpec.describe Api::V1::FetchDeals, type: :interactor do
             "total": 100
           }
         }
-        stub_request(:get,
-          "#{Rails.application.credentials[:pipeline_deals_endpoint]}deals.json?api_key=#{Rails.application.credentials[:pipeline_deals_api_key]}").
+        stub_request(:get, "#{ENV.fetch("PIPELINE_DEALS_ENDPOINT")}" + "deals.json?api_key=#{ENV.fetch("PIPELINE_DEALS_API_KEY")}"
         to_return(body: mock_response.to_json, status: 200)
       }
       
@@ -38,8 +37,7 @@ RSpec.describe Api::V1::FetchDeals, type: :interactor do
     
     context "when the api fetch is unsuccessfull" do
       before(:each) {
-        stub_request(:get,
-          "#{Rails.application.credentials[:pipeline_deals_endpoint]}deals.json?api_key=#{Rails.application.credentials[:pipeline_deals_api_key]}").
+        stub_request(:get, "#{ENV.fetch("PIPELINE_DEALS_ENDPOINT")}" + "deals.json?api_key=#{ENV.fetch("PIPELINE_DEALS_API_KEY")}"
         to_return(body: "Error", status: 500)
       }
       it "fails graciously"do

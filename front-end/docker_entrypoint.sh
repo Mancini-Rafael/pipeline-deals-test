@@ -2,12 +2,12 @@
 
 set -e
 
-echo "=== DOCKER ENTRYPOINT FRO PIPELINE DEALS FRONT-END ==="
+echo "=== DOCKER ENTRYPOINT FOR PIPELINE DEALS FRONT-END ==="
 
 COMMAND="$1"
 
 echo "=== INSTALLING DEPENDENCIES ==="
-
+npm install
 case "$COMMAND" in
   server)
     echo "=== RUNNING DEVELOPMENT SERVER ==="

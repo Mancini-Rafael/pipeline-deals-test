@@ -11,6 +11,9 @@ for a simple project where a user lists deals obtained via the PipelineDeals API
 ``` bash
   ./docker-compose up
 ```
+- This command takes a long time to run fully for the first time (the next times are much faster). So after running it, 
+check the logs to make sure both services are up before trying to access the page (React tends to spin up faster than 
+ruby because of the gems, on the first build).
 
 ### Using
 - To run the project you can use either
